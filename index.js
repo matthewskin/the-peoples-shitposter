@@ -288,7 +288,7 @@ async function handlePun(message) {
 		message.channel.send('The joke is that this API doesn\'t work.');
 		console.log(error);
 	});
-
+}
 	async function YOLOStatus(CompanyName) {
 		const options = {
 			method: 'GET',
@@ -307,5 +307,4 @@ async function handlePun(message) {
 			message.channel.send('Buggering Bears Buggered Bot');
 			  console.error(error);
 		  });
-	}
 }
