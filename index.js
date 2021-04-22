@@ -53,6 +53,10 @@ client.on('message', message => {
 			channel.send('chong');
 		}
 
+		if (message.content === '$ding') {
+			channel.send('dong');
+		}
+
 		if (message.content === '$bing') {
 			channel.send('bong');
 		}
