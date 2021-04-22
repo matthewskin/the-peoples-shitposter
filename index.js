@@ -82,6 +82,11 @@ client.on('message', message => {
 		if (message.content === '$pun') {
 			handlePun(message);
 		}
+		
+		if (message.content.toLowerCase().includes('$tendies')) {
+			console.log(message.substring(9));
+			YOLOStatus(message.substring(9));
+		}
 	}
 });
 
@@ -117,12 +122,6 @@ function messageNathan(channel) {
 	});
 	channel.send(apiMessage);
 }
-
-function sometimesFire() {
-	if(Math.floor(Math.random() * 1001) === 420) return true;
-	else return false;
-}
-
 
 async function handleWeather(message) {
 	let query = message.content.replace('$weather', '');
@@ -230,10 +229,7 @@ async function handleTaylorQuote(message) {
 		method: 'GET',
 		url: 'https://api.taylor.rest/',
 	};
-	if(sometimesFire())
-	{
-		message.channel.send('“The victor will never be asked if he told the truth. ”' + ' - Taylor Swift?');
-	}
+	if(Math.floor(Math.random() * 1001) === 420) message.channel.send('“The victor will never be asked if he told the truth. ” - Taylor Swift?');
 	else
 	{
 		axios.request(options).then((res) => {
@@ -289,4 +285,38 @@ async function handlePun(message) {
 		message.channel.send('The joke is that this API doesn\'t work.');
 		console.log(error);
 	});
+
+	async function YOLOStatus(CompanyName) {
+		const options = {
+			method: 'GET',
+			url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete',
+			params: {q: CompanyName, region: 'US'},
+			headers: {
+			  'x-rapidapi-key': 'SIGN-UP-FOR-KEY',
+			  'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
+			}
+		  };
+		  
+		  axios.request(options).then(function (response) {
+			console.log(response.data); 
+			message.channel.send(response.data);
+		  }).catch(function (error) {
+			message.channel.send('Buggering Bears Buggered Bot');
+			  console.error(error);
+		  });
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
