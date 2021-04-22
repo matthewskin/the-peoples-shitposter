@@ -290,7 +290,7 @@ async function handlePun(message) {
 	async function YOLOStatus(message) {
 
 		var companyName = message.content.substring(9);
-		console.log(ticker);
+		console.log(companyName);
 		const options = {
 			method: 'GET',
 			url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete',
