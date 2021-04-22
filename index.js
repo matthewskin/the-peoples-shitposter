@@ -86,7 +86,7 @@ client.on('message', message => {
 		}
 		
 		if (message.content.toLowerCase().includes('$tendies')) {
-			var ticker = message.substring(9);
+			var ticker = message.content.substring(9);
 			console.log(ticker);
 			YOLOStatus(ticker);
 		}
