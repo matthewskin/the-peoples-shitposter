@@ -88,7 +88,7 @@ client.on('message', message => {
 		if (message.content === '$pun') {
 			handlePun(message);
 		}
-		
+
 		if (message.content.toLowerCase().includes('$tendies')) {
 			YOLOStatus(message);
 		}
@@ -234,9 +234,8 @@ async function handleTaylorQuote(message) {
 		method: 'GET',
 		url: 'https://api.taylor.rest/',
 	};
-	if(Math.floor(Math.random() * 1001) === 420) message.channel.send('“The victor will never be asked if he told the truth. ” - Taylor Swift?');
-	else
-	{
+	if(Math.floor(Math.random() * 1001) === 420) {message.channel.send('“The victor will never be asked if he told the truth. ” - Taylor Swift?');}
+	else {
 		axios.request(options).then((res) => {
 			message.channel.send('"' + res.data.quote + '"' + ' - ' + res.data.author);
 		}).catch((error) => {
@@ -258,7 +257,8 @@ async function handleJoke(message) {
 			setTimeout(() => {
 				message.channel.send(res.data.delivery);
 			}, 5000);
-		} else {
+		}
+ else {
 			setTimeout(() => {
 				message.channel.send(res.data.joke);
 			}, 2000);
@@ -281,7 +281,8 @@ async function handlePun(message) {
 			setTimeout(() => {
 				message.channel.send(res.data.delivery);
 			}, 5000);
-		} else {
+		}
+ else {
 			setTimeout(() => {
 				message.channel.send(res.data.joke);
 			}, 2000);
@@ -293,24 +294,23 @@ async function handlePun(message) {
 }
 	async function YOLOStatus(message) {
 
-		var companyName = message.content.substring(9);
+		const companyName = message.content.substring(9);
 		console.log(companyName);
 		const options = {
 			method: 'GET',
 			url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete',
-			params: {q: companyName, region: 'US'},
+			params: { q: companyName, region: 'US' },
 			headers: {
-				
-			  'x-rapidapi-key': process.env.YAHOO_FINANCE_KEY,
-			  'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
-			}
-		  };
-		  
-		  axios.request(options).then(function (response) {
-			console.log(response.data); 
+				'x-rapidapi-key': process.env.YAHOO_FINANCE_KEY,
+				'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com',
+			},
+		};
+
+		axios.request(options).then(function(response) {
+			console.log(response.data);
 			message.channel.send(response.data);
-		  }).catch(function (error) {
+		}).catch(function(error) {
 			message.channel.send('Buggering Bears Buggered Bot');
-			  console.error(error);
-		  });
+			console.error(error);
+		});
 }
