@@ -86,9 +86,7 @@ client.on('message', message => {
 		}
 		
 		if (message.content.toLowerCase().includes('$tendies')) {
-			var ticker = message.content.substring(9);
-			console.log(ticker);
-			YOLOStatus(ticker);
+			YOLOStatus(message);
 		}
 	}
 });
@@ -289,11 +287,14 @@ async function handlePun(message) {
 		console.log(error);
 	});
 }
-	async function YOLOStatus(CompanyName) {
+	async function YOLOStatus(message) {
+
+		var companyName = message.content.substring(9);
+		console.log(ticker);
 		const options = {
 			method: 'GET',
 			url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete',
-			params: {q: CompanyName, region: 'US'},
+			params: {q: companyName, region: 'US'},
 			headers: {
 			  'x-rapidapi-key': 'SIGN-UP-FOR-KEY',
 			  'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
