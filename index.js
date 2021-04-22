@@ -8,7 +8,9 @@ const axios = require('axios').default;
 
 const intervalChannels = {};
 
-client.login(process.env.BOT_TOKEN);
+const bot_token = process.env.ENVIRONMENT === 'DEV' ? process.env.DEV_BOT_TOKEN : process.env.BOT_TOKEN;
+
+client.login(bot_token);
 
 client.once('ready', () => {
 	console.log('Ready!');
