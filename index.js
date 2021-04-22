@@ -296,7 +296,8 @@ async function handlePun(message) {
 			url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete',
 			params: {q: companyName, region: 'US'},
 			headers: {
-			  'x-rapidapi-key': '04bb91df96msha592e3d34f03a0fp16f797jsn2007a5707a51',
+				
+			  'x-rapidapi-key': process.env.YAHOO_FINANCE_KEY,
 			  'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
 			}
 		  };
